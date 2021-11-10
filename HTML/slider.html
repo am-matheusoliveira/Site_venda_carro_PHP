@@ -1,0 +1,26 @@
+<img id="s1" src="../IMG/Carros/img_01.jpg">
+<img id="s2" src="../IMG/Carros/img_02.jpg">
+<img id="s3" src="../IMG/Carros/img_03.jpg">
+<img id="s4" src="../IMG/Carros/img_04.jpg">
+
+<script src="../JS/jquery-3.6.0.min.js"></script>
+<script>
+   var imagens = ["#s1", "#s2", "#s3", "#s4"];
+   imgAtual = 0;
+   tempo = 5000;
+
+   $(document).ready(function(){
+      $(imagens[imgAtual]).fadeTo(1000, 1);
+
+      setInterval(troca, tempo);
+
+      function troca(){
+         $(imagens[imgAtual]).fadeTo(1000, 0);
+         imgAtual++;
+         if(imgAtual > (imagens.length-1)){
+            imgAtual = 0;
+         }
+         $(imagens[imgAtual]).fadeTo(1000, 1);
+      }
+   });
+</script>
