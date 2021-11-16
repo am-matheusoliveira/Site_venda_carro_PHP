@@ -5,7 +5,6 @@
 <html lang="pt-br">
     <head>
         <title>Itapú Veículos</title>
-        <!--<meta charset="utf-8"/>   Temos essa opção i abaixo temos uma mais completa-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="../CSS/estilo.css" />
         <link rel="icon" href="../IMG/logoGoogle.png" />
