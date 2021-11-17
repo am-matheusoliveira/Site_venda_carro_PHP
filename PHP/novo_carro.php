@@ -16,19 +16,32 @@
         <link rel="icon" href="../IMG/logoGoogle.png" />
         <script src="../JS/jquery-3.6.0.min.js"></script>
         <script>
-            $(document).ready(function(){
+            $(document).ready(function(){                
+                //$('select[name="select_marcas"]').on('click', function(){
                 $('select[name="select_marcas"]').on('change', function(){
                     var vmarcas = this.value;
+                    //var options = [];
                     $('select[name="select_modelos"] option').each(function(){
-                        var $this = $(this);
+                        var $this = $(this);                        
                         if($this.data('marca') == vmarcas){
+                            //options.push($this.val());
                             $this.show();
                         }else{
                             $this.hide();
-                        }
+                            //alert($this.data('marca'));
+                        }                        
                     });
+                    /*alert(options.length);
+                    for(var cont = 0; cont <= options.length; cont++){
+                        alert(options[cont]);                        
+                    }*/
+
+                    //$('#select_modelos').prop("selectedIndex", options[0]);
+                    $('select[name="select_modelos"]').val('');
+
+                    //var isVisible = $("#myDiv" ).is(":visible");
+                    //var isHidden = $("#myDiv" ).is(":hidden");
                 });
-                $('select[name="select_modelos"]').val('');                
             });
         </script>
     </head>
@@ -120,6 +133,21 @@
                 </div>
             </section>            
         </div>
+
+        <script type="text/javascript">
+            $(window).on("load", function(){                
+                var vmarcas = $("#select_marcas option:selected").val();
+                $('select[name="select_modelos"] option').each(function(){                    
+                    var $this = $(this);
+                    if($this.data('marca') == vmarcas){
+                        $this.show();                            
+                    }else{
+                        $this.hide();
+                    }
+                });
+                $('select[name="select_modelos"]').val('');
+            });
+        </script> 
     </body>
 </html>
 
@@ -142,7 +170,7 @@
                     //Aqui temos a função uniqid() ela gera um nome aleatorio como uma chave unica note que estamos concatenando com $ext que a extensão do File.
                     $novo_nome = uniqid().$ext;
                     //Aqui e onde o arquivo e movido para a pasta que foi definda em $dir.
-                    //Observer que aqui em baixo temos tmp_name. E como se o input type file pegasse o file e criace uma copia e mandace para o Temp
+                    //Observe que aqui em baixo temos tmp_name. E como se o input type file pegasse o file e criace uma copia e mandace para o Temp
                     // Do sistema operacional assim com a função move_uploaded_file devemos mudar o name para tmp_name que e onde esta o arquivo que sera movido
                     //Com isso ele ira pegar da pasta Temp.. depois mover para o $dir.
                     move_uploaded_file($_FILES["f_foto0".($if+1)]["tmp_name"], $dir.$novo_nome);
@@ -153,8 +181,8 @@
                     //4 Valores $largura, $altura, $tipo, e $alt ainda não sei oque e KKKKK
                     //Tabem captura e salva como array
                     list($largura, $altura, $tipo) = getimagesize($dir.$novo_nome);
-                    //imagecreatefromjpeg => essa função cria uma imagem do tipo jpeg basta passr o caminho e o nome do arquivo
-                    //Obs: Ela cria uma imagem apartir de outra imagem de com outra extensão como png  
+                    //imagecreatefromjpeg => essa função cria uma imagem do tipo jpeg basta passar o caminho e o nome do arquivo
+                    //Obs: Ela cria uma imagem apartir de outra imagem com outra extensão como png  
                     $imagem = imagecreatefromjpeg($dir.$novo_nome);
                     
                     //imagecreatetruecolor -> com isso Aqui assim como no Paint e como se estivessimos criando uma imagem com fundo branco

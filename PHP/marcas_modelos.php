@@ -23,8 +23,7 @@
                         }
                     });
                 });
-                //$('select[name="f_select_delete_marca"]').val('');
-                $('select[name="f_select_delete_modelo"]').val('');
+                //$('select[name="f_select_delete_modelo"]').val('');                
             });
 
             function add(){
@@ -131,7 +130,7 @@
                                     $valores  = mysqli_fetch_all($result);
                                     //
                                     foreach($valores as $valores){?>
-                                        <option value="<?php echo($valores[0]); ?>" selected="selected"><?php echo($valores[1]); ?></option>                            
+                                        <option value="<?php echo($valores[0]); ?>"><?php echo($valores[1]); ?></option>                            
                                 <?php } ?>
                                 </select>
                                 <input type="submit" value="Deletar marca" class="btmenu" name="f_bt_deletar_marca">
@@ -161,6 +160,22 @@
                 </div>
             </section>
         </div>
+        <script type="text/javascript">
+            $(window).on("load", function(){
+                $('#f_select_delete_marca').prop("selectedIndex", 0);
+                var vmarcas = $("#f_select_delete_marca option:selected").val();
+                $('select[name="f_select_delete_modelo"] option').each(function(){                    
+                    var $this = $(this);
+                    if($this.data('marca') == vmarcas){
+                        $this.show();                            
+                    }else{
+                        $this.hide();
+                    }
+                });                
+                //selected="selected"
+            });
+        </script> 
+
     </body>
 </html>
 <?php
