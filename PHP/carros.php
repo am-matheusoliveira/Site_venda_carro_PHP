@@ -27,7 +27,6 @@
                     }else{
                         $pagina_atual = 1;
                     }
-
                     $inicio = $pagina_atual - 1;
                     $inicio *= $maximo_registros_exibidos;
 
